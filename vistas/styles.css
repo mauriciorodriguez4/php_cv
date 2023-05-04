@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,200&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: white;
+}
+
+#navDesignLogin {
+  background: rgb(201, 12, 28);
+  background: linear-gradient(
+    90deg,
+    rgba(201, 12, 28, 1) 0%,
+    rgba(248, 212, 3, 1) 100%
+  );
+}
+
+#navDesignRegister {
+  background: rgb(201, 12, 28);
+  background: linear-gradient(
+    90deg,
+    rgba(201, 12, 28, 1) 0%,
+    rgba(248, 212, 3, 1) 100%
+  );
+}
+
+#sBloqueLogin {
+  background: rgb(248, 212, 3);
+  background: radial-gradient(
+    circle,
+    rgba(248, 212, 3, 1) 0%,
+    rgba(201, 12, 28, 1) 100%
+  );
+}
+
+#sBloqueRegister {
+  background: rgb(248, 212, 3);
+  background: radial-gradient(
+    circle,
+    rgba(248, 212, 3, 1) 0%,
+    rgba(201, 12, 28, 1) 100%
+  );
+}
+
+#reviewBody {
+  background-color: #eef3f4;
+}
+
+#reviewBody .card {
+  width: 380px;
+  border: none;
+  height: 60px;
+}
+
+#reviewBody .ratings i {
+  color: #cecece;
+  font-size: 32px;
+}
+
+#reviewBody .rating-color {
+  color: #fbc634 !important;
+}
+
+#reviewBody.review-count {
+  font-weight: 400;
+  margin-bottom: 2px;
+  font-size: 24px !important;
+}
+
+.color-navbar {
+  background-color: #58c2bf;
+}
+
+.pelis {
+  display: flex;
+}
+
+.button-margin {
+  margin-right: 61%;
+}
+
+.tamaño-img {
+  height: 150px;
+}
+
+.tamaño-logo {
+  height: 75px;
+}
+
+.tipo-letra h1 {
+  font-family: "Inter", sans-serif;
+}
+
+.color {
+  background-color: #e2e2ea;
+}
