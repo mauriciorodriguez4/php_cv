@@ -48,23 +48,23 @@ include "header.php";
 
                                 </div>
 
-                                <form>
+                                <form action="controlador/login_controlador.php" method="POST">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Correo electronico</label>
                                         <input type="email" class="form-control"
-                                            aria-describedby="emailHelp" placeholder="Ingresa un correo electronico" required>
+                                            aria-describedby="emailHelp" placeholder="Ingresa un correo electronico" name="correo" required>
 
                                     </div>
                                     <div class="form-group my-3">
                                         <label for="exampleInputPassword1">Contraseña</label>
-                                        <input type="password" class="form-control" placeholder="Ingresa tu contraseña" required>
+                                        <input type="password" class="form-control" placeholder="Ingresa tu contraseña" name="contrasena" required>
                                         <small class="form-text text-muted">Tú contraseña nunca será
                                             compartida</small>
                                     </div>
                                     <div class="">
                                         <p>¿No tienes cuenta? Registrate <a href="register.php">aquí</a></p>
                                     </div>
-                                    <button type="submit" class="btn btn-primary my-3">Iniciar sesión</button>
+                                    <button type="submit" class="btn btn-primary my-3" name="iniciar">Iniciar sesión</button>
                                 </form>
 
                             </div>

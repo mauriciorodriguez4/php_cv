@@ -26,8 +26,8 @@
     </center>
     <br>
     <div class="container-fluid d-flex align-items-center justify-content-between pelis">
-      <form class="d-flex col-3" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <form class="d-flex col-3" role="search" action="admin.php" method="GET">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="nombre_pelicula">
         <button class="btn btn-outline-primary" type="submit">Search</button>
       </form>    
       <div class="ms-auto text-center col-4">
@@ -46,10 +46,22 @@
         </tr>
       </thead>
       <tbody>
+          <?php
+            include "./modelo/conexion.php";
+            
+            $query_pelis = "SELECT * FROM peliculas p INNER JOIN genero g on p.id_genero = g.id_genero";
+            $result_pelis = mysqli_query($conexion, $query_pelis);
+
+            while($peli = mysqli_fetch_array($result_pelis)) { ?>
         <tr>
-          <td><img class="tamaño-img" src=""></td>
-          <td>Spiderman-3</td>
-          <td>Acción</td>
+        <!--  -->
+          <td>
+            <div clas="d-flex justify-content-center">
+              <img class="" src="./img/<?= $peli['poster'] ?>" width="100em" height="120em">
+            </div>
+          </td>
+          <td><?= $peli['nombre_pelicula'] ?></td>
+          <td><?= $peli['nombre_genero'] ?></td>
           <td>
             <div class="dropdown text-center">
               <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
@@ -57,12 +69,13 @@
                 Acciones...
               </button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Editar</a></li>
+                <li><a class="dropdown-item" href="./vistas/editar_pelicula.php">Editar</a></li>
                 <li><a class="dropdown-item" href="#">Eliminar</a></li>
               </ul>
             </div>
           </td>
         </tr>
+        <?php } ?>
       </tbody>
     </table>
   </div>

@@ -5,7 +5,6 @@
 <?php
     include('../modelo/conexion.php');
    include ("../controlador/agregar.php");
-   var_dump($_POST);
 ?>
 
 <!-- Formulario para agregar peliculas -->
@@ -193,6 +192,5 @@
             </div>
          </div>
       </div>
-
 
 <?php include('../footer.php'); ?>
