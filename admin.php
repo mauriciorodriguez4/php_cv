@@ -26,7 +26,7 @@
     </center>
     <br>
     <div class="container-fluid d-flex align-items-center justify-content-between pelis">
-      <form class="d-flex col-3" role="search" action="admin.php" method="GET">
+      <form class="d-flex col-3" role="search" action="vistas/buscar.php" method="POST">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="nombre_pelicula">
         <button class="btn btn-outline-primary" type="submit">Search</button>
       </form>    
@@ -43,7 +43,7 @@
           <th>Nombre de la pelicula</th>
           <th>Genero</th>
           <th>Acciones</th>
-        </tr>
+        </tr> 
       </thead>
       <tbody>
           <?php
@@ -69,7 +69,7 @@
                 Acciones...
               </button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="./vistas/editar_pelicula.php">Editar</a></li>
+                <li><a class="dropdown-item" href="vistas/editar_pelicula.php?id=<?= $peli['id_pelicula'] ?>">Editar</a></li>
                 <li><a class="dropdown-item" href="#">Eliminar</a></li>
               </ul>
             </div>
