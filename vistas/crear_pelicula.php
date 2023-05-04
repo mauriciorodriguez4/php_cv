@@ -1,6 +1,12 @@
 <?php include('../header.php'); ?>
 
-<?php include('../modelo/conexion.php'); ?>
+
+
+<?php
+    include('../modelo/conexion.php');
+   include ("../controlador/agregar.php");
+   var_dump($_POST);
+?>
 
 <!-- Formulario para agregar peliculas -->
       <div class="container col mt-2 p-4 rounded bg-success-subtle">
@@ -11,8 +17,6 @@
                <form
                   action="crear_pelicula.php"
                   method="POST"
-                  enctype="multipart/form-data"
-                  validate
                >
                   <div class="input-group mb-3">
                      <span class="input-group-text"
@@ -40,12 +44,10 @@
                         aria-describedby="inputGroupFileAddon04"
                         aria-label="Upload"
                         id="image_uploads"
-                        name="image_uploads"
-                        id="poster"
                         accept=".jpg, .jpeg, .png"
                         multiple
                         required
-                        name="image"
+                        name="image_uploads"
                      />
                   </div>
                   <div class="row">
@@ -177,6 +179,7 @@
                         class="btn btn-success btn-lg"
                         type="submit"
                         name="crear_peli"
+                        value ="ok"
                      >
                         Crear
                      </button>

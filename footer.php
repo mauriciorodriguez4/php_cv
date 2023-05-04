@@ -15,7 +15,7 @@
   </script>
 
   <script>
-    const input = document.querySelector('#image_uploads');
+const input = document.querySelector('#image_uploads');
 const preview = document.querySelector('#preview');
 
 input.addEventListener('change', updateImageDisplay);
@@ -47,7 +47,7 @@ function updateImageDisplay() {
             }, tamano ${returnFileSize(file.size)}.`;
             const image = document.createElement('img');
             image.src = URL.createObjectURL(file);
-
+            
             image.style.width = '300px';
             image.style.height = '400px';
 
@@ -61,6 +61,7 @@ function updateImageDisplay() {
 
             listItem.appendChild(image);
             listItem.appendChild(para);
+
          } else {
             para.textContent = `Archivo ${file.name}: No es un tipo de archivo valido.`;
             listItem.appendChild(para);
@@ -71,7 +72,6 @@ function updateImageDisplay() {
    }
 }
 
-// https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types
 const fileTypes = [
    'image/apng',
    'image/bmp',
