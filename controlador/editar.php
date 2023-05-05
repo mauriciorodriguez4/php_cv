@@ -18,15 +18,7 @@ if( isset($_POST['editar_peli']) ) {
         $sql_query = "UPDATE `peliculas` SET `nombre_pelicula`='$nombre',`id_genero`='$genero',`id_director`='$director',`duracion`='$duracion',`estreno`='$estreno',`sinopsis`='$sinopsis', `poster`= '$poster',`recaudacion`= '$recaudacion' WHERE id_pelicula = '$id';";
 
         mysqli_query($conexion, $sql_query);
-        header('Location: ../admin.php');
-        
-        // if (mysqli) {
-        //     # code...
-        //     header('Location: ../admin.php');
-        // } else {
-        //     # code...
-        //     echo '<div class="alert alert-danger">Pelicula no Editada</div>';
-        // }
+        header('Location: ../admin.php');        
     } else {
         echo '<div class="alert alert-warning">Faltan campos por rellenar</div>';
     }

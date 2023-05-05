@@ -11,12 +11,10 @@ if (!empty($_POST["crear_peli"])) {
         $sinopsis= $_POST["sinopsis"];
         
         $sql= $conexion->query("insert into peliculas(nombre_pelicula, id_genero, id_director, duracion, estreno, sinopsis, poster, recaudacion) values ('$nombre','$genero','$director','$duracion','$estreno','$sinopsis','$poster','$recaudacion')");
-        if ($sql==1) {
-            # code...
+        if ($sql==1) {            
             echo '<div class="alert alert-success">Pelicula registrada correctamente</div>';
             header('Location: ../admin.php');
-        } else {
-            # code...
+        } else {            
             echo '<div class="alert alert-danger">Pelicula no registrada</div>';
         }
     } else {

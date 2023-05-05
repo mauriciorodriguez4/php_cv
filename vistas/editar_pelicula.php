@@ -2,8 +2,8 @@
 include('../header.php'); 
 include('../modelo/conexion.php');
     $id=$_GET["id"];
-    $pelis_sql = "Select * from peliculas where id_pelicula=$id";
-    $pelis_result = mysqli_query($conexion, $pelis_sql);
+    $pelis_sql = "Select * from peliculas where id_pelicula=$id ;";
+    $pelis_result=mysqli_query($conexion, $pelis_sql);
 
 ?>
 

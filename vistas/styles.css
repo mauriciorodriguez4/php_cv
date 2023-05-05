@@ -51,16 +51,16 @@ body {
   height: 60px;
 }
 
-#reviewBody .ratings i {
+#pagDesign .ratings i {
   color: #cecece;
   font-size: 32px;
 }
 
-#reviewBody .rating-color {
+#pagDesign .rating-color {
   color: #fbc634 !important;
 }
 
-#reviewBody.review-count {
+#pagDesign.review-count {
   font-weight: 400;
   margin-bottom: 2px;
   font-size: 24px !important;

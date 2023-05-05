@@ -70,7 +70,7 @@
               </button>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="vistas/editar_pelicula.php?id=<?= $peli['id_pelicula'] ?>">Editar</a></li>
-                <li><a class="dropdown-item" href="#">Eliminar</a></li>
+                <li><a class="dropdown-item" href="controlador/eliminar_pelicula.php?id=<?= $peli['id_pelicula'] ?>">Eliminar</a></li>
               </ul>
             </div>
           </td>

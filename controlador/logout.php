@@ -9,5 +9,5 @@
     // Redirige al usuario a la página de inicio de sesión
     header('Location: ../login.php');
     header('Cache-Control: no-cache, no-store, must-revalidate');
-    exit;c
+    exit;
 ?>

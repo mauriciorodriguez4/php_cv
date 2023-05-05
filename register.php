@@ -3,7 +3,6 @@
 ?>
 
 <nav class="navbar navbar-expand-lg w-100 navbar-light bg-light" id="navDesignRegister">
-
     <div class="col-8 ps-5">
         <a class="navbar-brand" href="#">
             <img src="img/logo.png" style="width: 110px; height: 110px;" alt="">

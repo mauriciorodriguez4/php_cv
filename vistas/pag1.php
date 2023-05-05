@@ -2,7 +2,7 @@
 include "../header.php";
 ?>
 
-<nav class="navbar navbar-expand-lg w-100 navbar-light bg-light" id="navDesignLogin">
+<nav class="navbar navbar-expand-lg w-100 navbar-light bg-light" id="pagDesign">
 
     <div class="col-8 ps-5">
         <a class="navbar-brand" href="#">
@@ -33,7 +33,7 @@ include "../header.php";
     </div>
 </nav>
 
-<d class="row">
+<div class="row" id="pagDesign">
     <div class="col-sm-12 col-lg-4 col-md-12 my-5 ps-5">
         <img class="img-thumbnail rounded float-start" src="./img/avengers.jpg" alt=""
             style="height: 700; height: 700px;">
@@ -73,32 +73,33 @@ include "../header.php";
                 </div>
             </div>
         </div>
-        
+
         <?php
-            $usuario = "usuario";
-            $contrasena = "constrasena";
-            $correo = "correo";
-            $conn = new mysqli($servername, $username, $password, $dbname);
-            if ($conn->connect_error) {
-                die("Error en la conexión a la base de datos: " . $conn->connect_error);
-            }
-
-            // Recuperar datos del formulario
-            $movie_id = $_POST['movie_id'];
-            $reviewer_name = $_POST['reviewer_name'];
-            $review_text = $_POST['review_text'];
-
-            // Insertar reseña en la base de datos
-            $sql = "INSERT INTO reviews (movie_id, reviewer_name, review_text) VALUES ('$movie_id', '$reviewer_name', '$review_text')";
-            if ($conn->query($sql) === TRUE) {
-                echo "Reseña añadida correctamente";
-            } else {
-                echo "Error al añadir reseña: " . $sql . "<br>" . $conn->error;
-            }
-
-            // Cerrar la conexión a la base de datos
-            $conn->close();
-            ?>
+            include "./agregar_res.php";
+            while($peli = mysqli_fetch_array($result_pelis)) { ?>
+        <tr>
+        <!--  -->
+          <td>
+            <div clas="d-flex justify-content-center">
+              <img class="" src="./img/<?= $peli['poster'] ?>" width="100em" height="120em">
+            </div>
+          </td>
+          <td><?= $peli['nombre_pelicula'] ?></td>
+          <td><?= $peli['nombre_genero'] ?></td>
+          <td>
+            <div class="dropdown text-center">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Acciones...
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="./vistas/editar_pelicula.php">Editar</a></li>
+                <li><a class="dropdown-item" href="#">Eliminar</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <?php } ?>
 
 <?php
 include "../footer.php";
