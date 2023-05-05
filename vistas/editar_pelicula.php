@@ -1,4 +1,5 @@
 <?php 
+
 include('../header.php'); 
 include('../modelo/conexion.php');
     $id=$_GET["id"];

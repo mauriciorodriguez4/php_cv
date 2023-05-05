@@ -10,7 +10,7 @@
       $result = mysqli_query($conexion, $query);
 
       if(!$result) {
-         die("Ocurrio un error al intentar eliminar.");
+         die("Ocurrio un error al intentar eliminar."/);
       }
    }
    header('Location: ../admin.php');

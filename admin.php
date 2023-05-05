@@ -1,5 +1,10 @@
 <?php
  include "header.php";
+ session_start();
+
+ if( !isset($_SESSION['usuario']) ) {
+  header('Location: index.php');
+ }
 ?>
 <nav class="navbar navbar-expand-lg color-navbar">
     <div class="container-fluid">
@@ -12,7 +17,7 @@
               Administrador
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+              <li><a class="dropdown-item" href="controlador/logout.php">Cerrar Sesión</a></li>
             </ul>
           </li>
         </ul>
@@ -22,7 +27,7 @@
   <br>
   <div class="container">
     <center>
-      <h1 class="tipo-letra">Bienvenido, @Usuario</h1>
+      <h1 class="tipo-letra">¡Bienvenido, @<?= $_SESSION['usuario'] ?>!</h1>
     </center>
     <br>
     <div class="container-fluid d-flex align-items-center justify-content-between pelis">

@@ -1,28 +1,26 @@
 <?php
 include "header.php";
-?>
+session_start();
+
+if(isset($_SESSION['usuario'])) {
+    header('Location: catalog.php');
+} else { ?>
 
 <nav class="navbar navbar-expand-lg w-100 navbar-light bg-light" id="navDesignLogin">
 
-    <div class="col-8 ps-5"></div>
+    <div class="col-8 ps-5">
+        <a class="navbar-brand" href="catalog.php">
             <img src="./img/logo.png"
                 style="width: 110px; height: 110px;" alt="">
+        </a>
     </div>
     <div class="collapse navbar-collapse col-4" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link h4" href="catalog.php">Mi catalogo</a>
             </li>
-            <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle h4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Genero
-          </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Accion</a></li>
-              <li><a class="dropdown-item" href="#">Suspenso</a></li>
-              <li><a class="dropdown-item" href="#">Romance</a></li>
-            </ul>
-          </li>
+            <li class="nav-item">
+                <a class="nav-link h4" href="catalog.php">Nosotros</a>
             </li>
         </ul>
     </div>
@@ -82,5 +80,6 @@ include "header.php";
 
 
 <?php
+} 
 include "footer.php";
 ?>

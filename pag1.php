@@ -1,34 +1,29 @@
 <?php
 include "header.php";
+session_start();
 ?>
 
 <nav class="navbar navbar-expand-lg w-100 navbar-light bg-light" id="navDesignLogin">
 
     <div class="col-8 ps-5">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="catalog.php">
             <img src="./img/logo.png" style="width: 110px; height: 110px;" alt="">
         </a>
     </div>
     <div class="collapse navbar-collapse col-4" id="navbarNavDropdown">
         <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link h4" href="#">Inicio <span class="sr-only"></span></a>
+            <li class="nav-item">
+                <a class="nav-link h4" href="catalog.php">Mi catalogo</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link h4" href="catalog.html">Mi catalogo</a>
+                <a class="nav-link h4" href="catalog.php">Nosotros</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle h4" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Genero
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Accion</a></li>
-                    <li><a class="dropdown-item" href="#">Suspenso</a></li>
-                    <li><a class="dropdown-item" href="#">Romance</a></li>
-                </ul>
+            <?php
+            if (isset($_SESSION['usuario'])) { ?>
+                <li class="nav-item">
+                <a class="nav-link h4" href="controlador/logout.php">Salir </a>
             </li>
-            </li>
+           <?php } ?>
         </ul>
     </div>
 </nav>
@@ -75,26 +70,66 @@ include "header.php";
                 $resenas = mysqli_fetch_array($result_resenas);
             ?>
 
-            <div class="card p-3 my-3" style="background-color: black; color: white;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="ratings">
-                        <i class="fa fa-star rating-color"></i>
-                        <i class="fa fa-star rating-color"></i>
-                        <i class="fa fa-star rating-color"></i>
-                        <i class="fa fa-star rating-color"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <h5 class="review-count"><?= $num_resenas ?> reseñas</h5>
-                </div>
-            </div>
         </div>
 
+        <?php
+            if(isset($_SESSION['usuario'])) {   ?>
         <div class="dropdown text-center">
-                <a class="" href="vistas/agregar_res.php?id=<?= $resenas['pelicula_id'] ?>">
-                    <button class="btn btn-primary " type="button">Escribir reseña</button>
-                </a>
+            <a class="" href="vistas/agregar_res.php?id=<?= $resenas['pelicula_id'] ?>">
+                <button class="btn btn-primary " type="button">Escribir reseña</button>
+            </a>
         </div>
-</div>
-<?php
+
+        <?php } ?>
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <th>Titulo</th>
+                    <th>Nombre</th>
+                    <th>Comentario</th>
+                    <th>Calificación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+            include "./modelo/conexion.php";
+
+            if( isset($_GET['id']) ) {
+                $id_peli = $_GET['id'];
+        
+                $query_res = "SELECT * FROM resenas WHERE pelicula_id = '$id_peli'";
+                $result_res = mysqli_query($conexion, $query_res);
+                $res = mysqli_fetch_array($result_peli);
+            
+            }
+                
+
+            while($res = mysqli_fetch_array($result_res)) { ?>
+                <tr>
+                    <td><?= $res['resena_titulo'] ?></td>
+                    <td class="text-light"><?= $res['usuario'] ?></td>
+                    <td><?= $res['resena_texto'] ?></td>
+                    <td class="text-light">
+                        <?php  
+                            $nota = $res['resena_calificacion'];
+                            $nota_faltante = 5 - $nota;
+
+                            for($i = 0; $i < $nota; $i++) { ?>
+
+                            <i class="fa-solid fa-star text-warning" style="color: #ffffff;"></i>
+
+                        <?php } 
+                        for($j = 0; $j < $nota_faltante ; $j++) { ?>
+
+                            <i class="fa-regular fa-star" style="color: #fafafa;"></i>
+
+                        <?php }  ?>
+                    </td>
+                </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
+    <?php
 include "footer.php";
 ?>
