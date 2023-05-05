@@ -1,4 +1,11 @@
-<?php include('../header.php');
+<?php 
+
+session_start();
+ if( !isset($_SESSION['usuario']) || $_SESSION['usuario'] != "admin" ) {
+    header('Location: index.php');
+ }
+
+include('../header.php');
 
     include('../modelo/conexion.php'); //$conexion
     // include ("../controlador/agregar_reseña.php");
@@ -51,7 +58,7 @@
           <div class="input-group  mt-5 mb-3">
             <div class="form-floating d-sm-flex">
               <h4 class="text-warning me-3">Calificacion:</h4>
-              <input min="0" max="10" type="number" placeholder="0-10" name="calificacion">
+              <input min="1" max="5" type="number" placeholder="1-5" name="calificacion">
             </div>
           </div>
 

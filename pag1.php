@@ -75,7 +75,7 @@ session_start();
         <?php
             if(isset($_SESSION['usuario'])) {   ?>
         <div class="dropdown text-center">
-            <a class="" href="vistas/agregar_res.php?id=<?= $resenas['pelicula_id'] ?>">
+            <a class="" href="vistas/agregar_res.php?id=<?= $id_peli ?>">
                 <button class="btn btn-primary " type="button">Escribir reseña</button>
             </a>
         </div>

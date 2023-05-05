@@ -1,7 +1,7 @@
 <?php
  include "header.php";
 
- if( $_SESSION['usuario'] ) {
+ if( !isset($_SESSION['usuario']) || $_SESSION['usuario'] == "admin" ) {
     header('Location: index.php');
  }
 
