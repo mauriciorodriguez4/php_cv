@@ -3,7 +3,11 @@ include "header.php";
 session_start();
 
 if(isset($_SESSION['usuario'])) {
-    header('Location: catalog.php');
+    if($_SESSION['usuario'] == 'admin') {
+        header('Location: admin.php');
+    } else {
+        header('Location: catalog.php');
+    }
 } else { ?>
 
 <nav class="navbar navbar-expand-lg w-100 navbar-light bg-light" id="navDesignLogin">
