@@ -1,19 +1,24 @@
-<?php include('../header.php'); ?>
+<?php include('../header.php');
 
-<?php
-    include('../modelo/conexion.php');
-    include ("../controlador/agregar_reseña.php");
+    include('../modelo/conexion.php'); //$conexion
+    // include ("../controlador/agregar_reseña.php");
+    if(isset($_GET['id'])) {
+      $id_pelicula = $_GET["id"];
+    }
     
-    if(isset($_POST["btn-agregar_res"])){
-      $id_pelicula=$_POST["id_pelicula"];
-      $sql=$conexion->query("Select * from peliculas where id_pelicula=$id_pelicula");
-    /*$id_pe = "Select * from peliculas where id_pelicula=$id_pelicula;";
-    $id_pe_result = mysqli_query($conexion, $id_pe);*/
+    if( isset($_POST["btn-agregar_res"]) ){
+      print_r($_POST);
+      $id = $_POST['id_pelicula'];
+      $titulo = $_POST['titulo_com'];
+      $calificacion = $_POST['calificacion'];
+      $comentario = $_POST['comentario'];
 
-      $id_usuario=$_POST["id_usuario"];
-      $sql=$conexion->query("Select * from login where id_pelicula=$id_usuario");
-    /*$id_us = "Select * from login where id_pelicula=$id_usuario;";
-    $id_us_result = mysqli_query($conexion, $id_us);*/
+      $query = "INSERT INTO resenas (usuario, resena_titulo, resena_texto, resena_calificacion, pelicula_id) 
+                VALUES('@usuario', '$titulo', '$comentario', '$calificacion', '$id');";
+
+      $result_insert = mysqli_query($conexion, $query);
+
+      header("Location: ../pag1.php?id=$id");
     }
     
 ?>
@@ -35,27 +40,26 @@
 
 
       <form action="agregar_res.php" method="POST">
-      <input type="hidden" name="id_pelicula" value="<?= $_GET["id_pelicula"] ?>">
-      <input type="hidden" name="id_usuario" value="<?= $_GET["id_usuario"] ?>">
-      <div class="input-group  mt-5 mb-3">
-        <div class="form-floating d-sm-flex">
-          <h4 class="text-warning mt-2 me-4 ps-4">Nombre:</h4>
-          <input type="text" class="form-control" name="titulo_com"/>
-        </div>
-      </div>
+          <div class="input-group  mt-5 mb-3">
+            <div class="form-floating d-sm-flex">
+              <h4 class="text-warning mt-2 me-4 ps-4">Nombre:</h4>
+              <input type="text" class="form-control" name="titulo_com"/>
+              <input type="hidden" name="id_pelicula" value="<?= $id_pelicula ?>">
+            </div>
+          </div>
 
-      <div class="input-group  mt-5 mb-3">
-        <div class="form-floating d-sm-flex">
-          <h4 class="text-warning me-3">Calificacion:</h4>
-          <input min="0" max="10" type="number" placeholder="0-10" name="calificacion">
-        </div>
-      </div>
+          <div class="input-group  mt-5 mb-3">
+            <div class="form-floating d-sm-flex">
+              <h4 class="text-warning me-3">Calificacion:</h4>
+              <input min="0" max="10" type="number" placeholder="0-10" name="calificacion">
+            </div>
+          </div>
 
-      <div class="form-floating mt-5">
-        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px" name="comentario"></textarea>
-        <label for="floatingTextarea2">Escribe la reseña de la pelicula...</label>
-      </div>
-      <button class="btn btn-success btn-lg mt-5" type="submit" name="btn-agregar_res" value ="ok">Agregar</button>
+          <div class="form-floating mt-5">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px" name="comentario"></textarea>
+            <label for="floatingTextarea2">Escribe la reseña de la pelicula...</label>
+          </div>
+          <button class="btn btn-success btn-lg mt-5" type="submit" name="btn-agregar_res" value ="ok">Agregar</button>
       </form>
     </div>
   </div>

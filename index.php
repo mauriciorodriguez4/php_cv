@@ -4,19 +4,14 @@ include "header.php";
 
 <nav class="navbar navbar-expand-lg w-100 navbar-light bg-light" id="navDesignLogin">
 
-    <div class="col-8 ps-5">
-        <a class="navbar-brand" href="#">
+    <div class="col-8 ps-5"></div>
             <img src="./img/logo.png"
                 style="width: 110px; height: 110px;" alt="">
-        </a>
     </div>
     <div class="collapse navbar-collapse col-4" id="navbarNavDropdown">
         <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link h4" href="#">Inicio <span class="sr-only"></span></a>
-            </li>
             <li class="nav-item">
-                <a class="nav-link h4" href="catalog.html">Mi catalogo</a>
+                <a class="nav-link h4" href="catalog.php">Mi catalogo</a>
             </li>
             <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle h4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

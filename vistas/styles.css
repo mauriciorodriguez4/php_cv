@@ -1,20 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,200&display=swap");
 
-body {
-  font-family: "Montserrat", sans-serif;
+body{
+  font-family: 'Montserrat', sans-serif;
   background-color: white;
 }
 
 #navDesignLogin {
-  background: rgb(201, 12, 28);
-  background: linear-gradient(
-    90deg,
-    rgba(201, 12, 28, 1) 0%,
-    rgba(248, 212, 3, 1) 100%
-  );
-}
-
-#navDesignRegister {
   background: rgb(201, 12, 28);
   background: linear-gradient(
     90deg,
@@ -41,11 +32,11 @@ body {
   );
 }
 
-#reviewBody {
+#pagDesign {
   background-color: #eef3f4;
 }
 
-#reviewBody .card {
+#pagDesign .card {
   width: 380px;
   border: none;
   height: 60px;
@@ -60,7 +51,7 @@ body {
   color: #fbc634 !important;
 }
 
-#pagDesign.review-count {
+#pagDesign .review-count {
   font-weight: 400;
   margin-bottom: 2px;
   font-size: 24px !important;

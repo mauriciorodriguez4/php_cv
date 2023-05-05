@@ -1,8 +1,8 @@
 <?php
-include "../header.php";
+include "header.php";
 ?>
 
-<nav class="navbar navbar-expand-lg w-100 navbar-light bg-light" id="pagDesign">
+<nav class="navbar navbar-expand-lg w-100 navbar-light bg-light" id="navDesignLogin">
 
     <div class="col-8 ps-5">
         <a class="navbar-brand" href="#">
@@ -33,23 +33,31 @@ include "../header.php";
     </div>
 </nav>
 
-<div class="row" id="pagDesign">
+<!-- Tarjeta -->
+<?php
+    include('modelo/conexion.php'); // $conexion
+    if( isset($_GET['id']) ) {
+        $id_peli = $_GET['id'];
+
+        $query_peli = "select * from peliculas where id_pelicula = '$id_peli '";
+        $result_peli = mysqli_query($conexion, $query_peli);
+        $peli = mysqli_fetch_array($result_peli);
+
+    }
+?>
+<div class="row bg-dark" id="pagDesign">
     <div class="col-sm-12 col-lg-4 col-md-12 my-5 ps-5">
-        <img class="img-thumbnail rounded float-start" src="./img/avengers.jpg" alt=""
+        <img class="img-thumbnail rounded float-start" src="img/<?= $peli['poster'] ?>" alt=""
             style="height: 700; height: 700px;">
     </div>
 
+
     <div class="col-lg-8 p-5">
         <div id="title">
-            <h1 style="color:white">Avengers: Infinity War</h1>
+            <h1 style="color:white"><?= $peli['nombre_pelicula'] ?></h1>
         </div>
         <div class="mt-5">
-            <p style="color: white;">A medida que los Vengadores y sus aliados han seguido protegiendo al mundo de
-                amenazas demasiado grandes para que cualquier otro héroe las pueda manejar, un nuevo peligro surge desde
-                las sombras cósmicas: Thanos, un déspota de la infamia intergaláctica, su objetivo es hacerse con las
-                seis Gemas del Infinito, artefactos de poder inimaginable, y usarlas para infligir su torcida voluntad
-                en toda la realidad. Todo por lo que han estado luchando los Vengadores ha conducido a este momento - el
-                destino de la Tierra y la existencia misma jamás han sido tan inciertos.</p>
+            <p style="color: white;"><?= $peli['sinopsis'] ?></p>
         </div>
 
 
@@ -60,6 +68,13 @@ include "../header.php";
                 </p>
             </div>
 
+            <?php
+                $query_resenas = "SELECT * FROM resenas WHERE pelicula_id = '$id_peli' ";
+                $result_resenas = mysqli_query($conexion, $query_resenas);
+                $num_resenas = mysqli_num_rows($result_resenas);
+                $resenas = mysqli_fetch_array($result_resenas);
+            ?>
+
             <div class="card p-3 my-3" style="background-color: black; color: white;">
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="ratings">
@@ -69,38 +84,17 @@ include "../header.php";
                         <i class="fa fa-star rating-color"></i>
                         <i class="fa fa-star"></i>
                     </div>
-                    <h5 class="review-count">12 Reseñas</h5>
+                    <h5 class="review-count"><?= $num_resenas ?> reseñas</h5>
                 </div>
             </div>
         </div>
 
-        <?php
-            include "./agregar_res.php";
-            while($peli = mysqli_fetch_array($result_pelis)) { ?>
-        <tr>
-        <!--  -->
-          <td>
-            <div clas="d-flex justify-content-center">
-              <img class="" src="./img/<?= $peli['poster'] ?>" width="100em" height="120em">
-            </div>
-          </td>
-          <td><?= $peli['nombre_pelicula'] ?></td>
-          <td><?= $peli['nombre_genero'] ?></td>
-          <td>
-            <div class="dropdown text-center">
-              <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Acciones...
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="./vistas/editar_pelicula.php">Editar</a></li>
-                <li><a class="dropdown-item" href="#">Eliminar</a></li>
-              </ul>
-            </div>
-          </td>
-        </tr>
-        <?php } ?>
-
+        <div class="dropdown text-center">
+                <a class="" href="vistas/agregar_res.php?id=<?= $resenas['pelicula_id'] ?>">
+                    <button class="btn btn-primary " type="button">Escribir reseña</button>
+                </a>
+        </div>
+</div>
 <?php
-include "../footer.php";
+include "footer.php";
 ?>

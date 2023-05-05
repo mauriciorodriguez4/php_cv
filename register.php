@@ -2,37 +2,29 @@
  include "header.php";
 ?>
 
-<nav class="navbar navbar-expand-lg w-100 navbar-light bg-light" id="navDesignRegister">
-    <div class="col-8 ps-5">
-        <a class="navbar-brand" href="#">
-            <img src="img/logo.png" style="width: 110px; height: 110px;" alt="">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
+<nav class="navbar navbar-expand-lg w-100 navbar-light bg-light" id="navDesignLogin">
 
+    <div class="col-8 ps-5">
+        <a class="navbar-brand" href="catalog.php">
+            <img src="./img/logo.png"
+                style="width: 110px; height: 110px;" alt="">
+        </a>
+    </div>
     <div class="collapse navbar-collapse col-4" id="navbarNavDropdown">
         <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link h4" href="#">Inicio <span class="sr-only"></span></a>
-            </li>
             <li class="nav-item">
-                <a class="nav-link h4" href="catalog.html">Mi catalogo</a>
+                <a class="nav-link h4" href="catalog.php">Mi catalogo</a>
             </li>
-
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle h4" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Genero
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Accion</a></li>
-                    <li><a class="dropdown-item" href="#">Suspenso</a></li>
-                    <li><a class="dropdown-item" href="#">Romance</a></li>
-                </ul>
-            </li>
+          <a class="nav-link dropdown-toggle h4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Genero
+          </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Accion</a></li>
+              <li><a class="dropdown-item" href="#">Suspenso</a></li>
+              <li><a class="dropdown-item" href="#">Romance</a></li>
+            </ul>
+          </li>
             </li>
         </ul>
     </div>
